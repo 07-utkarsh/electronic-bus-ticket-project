@@ -1,0 +1,1 @@
+/usr/bin/cc CMakeFiles/utkarsh.dir/main.c.o -o utkarsh 

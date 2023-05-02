@@ -1,0 +1,3 @@
+/home/jabed/Devs/electronic-bus-ticket-project/build/CMakeFiles/utkarsh.dir
+/home/jabed/Devs/electronic-bus-ticket-project/build/CMakeFiles/edit_cache.dir
+/home/jabed/Devs/electronic-bus-ticket-project/build/CMakeFiles/rebuild_cache.dir
