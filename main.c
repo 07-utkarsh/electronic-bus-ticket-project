@@ -32,7 +32,7 @@ void displayBuses(char *origin, char *destination)            //Working perfectl
 {
     printf("Available buses for %s to %s route:\n", origin, destination);
     int count = 0;
-    FILE *fp = fopen("KheraTest.txt", "rb");
+    FILE *fp = fopen("KheraTest.txt", "r");
     if (fp == NULL)
     {
         printf("Error opening file.\n");
@@ -182,10 +182,16 @@ void deleteBus(int bus_id) {
 Bus bus;
     for (int i = 0; i < num_buses; i++) {
         if (buses[i].bus_id == bus_id) {
-            for (int j = i; j < num_buses - 1; j++) {
-                buses[j] = buses[j + 1];
-            }
-            num_buses--;
+            // for (int j = i; j < num_buses - 1; j++) {
+            //     buses[j] = buses[j + 1];
+            // }
+            // num_buses--;
+
+            buses[i].bus_id = 0;
+            strcpy(buses[i].origin, "");
+            strcpy(buses[i].destination, "");
+            buses[i].fare = 0;
+            buses[i].num_seats = 0;
             printf("Bus with ID %d deleted successfully.\n", bus_id);
             
 
@@ -206,23 +212,23 @@ Bus bus;
 
 
 // Function to update a bus
-void updateBus(int bus_id) {
+// void updateBus(int bus_id) {
 
 
-for (int i = 0; i < num_buses; i++) {
-if (buses[i].bus_id == bus_id) {
-printf("Enter new origin: ");
-scanf("%s", buses[i].origin);
-printf("Enter new destination: ");
-scanf("%s", buses[i].destination);
-printf("Enter new fare: ");
-scanf("%d", &buses[i].fare);
-printf("Bus with ID %d updated successfully.\n", bus_id);
-return;
-}
-}
-printf("Bus not found.\n");
-}
+// for (int i = 0; i < num_buses; i++) {
+// if (buses[i].bus_id == bus_id) {
+// printf("Enter new origin: ");
+// scanf("%s", buses[i].origin);
+// printf("Enter new destination: ");
+// scanf("%s", buses[i].destination);
+// printf("Enter new fare: ");
+// scanf("%d", &buses[i].fare);
+// printf("Bus with ID %d updated successfully.\n", bus_id);
+// return;
+// }
+// }
+// printf("Bus not found.\n");
+// }
 
 
 // Main function
@@ -238,8 +244,8 @@ int main()
         printf("3. Book seat\n");
         printf("4. Cancel seat\n");
         printf("5. Delete a particular bus\n");
-        printf("6. Update a particular bus\n");
-        printf("7. Exit\n");
+        // printf("6. Update a particular bus\n");
+        printf("6. Exit\n");
         printf("Enter choice: ");
         scanf("%d", &choice);
 
@@ -274,12 +280,12 @@ int main()
             scanf("%d", &bus_id);
             deleteBus(bus_id);
             break;
+        // case 6:
+        //     printf("Enter bus ID: ");
+        //     scanf("%d", &bus_id);
+        //     updateBus(bus_id);
+        //     break;
         case 6:
-            printf("Enter bus ID: ");
-            scanf("%d", &bus_id);
-            updateBus(bus_id);
-            break;
-        case 7:
             exit(0);
         default:
             printf("Invalid choice.\n");
